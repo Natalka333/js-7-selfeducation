@@ -29,14 +29,3 @@ const lightbox = new SimpleLightbox('.gallery a', {
     animationSpeed:	250,
     
 });
-
-
-const dog = {
-    name: "Mango",
-    age: 3,
-    isHappy: true,
-  };
-  
-  const dogJSON = JSON.stringify(dog);
-  console.log(dogJSON);// "{"name":"Mango","age":3,"isHappy":true}"
-  
