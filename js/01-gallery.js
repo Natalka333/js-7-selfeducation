@@ -1,6 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
+
 const galleryImage = document.querySelector('.gallery');
 
 function createGalleryItems(items) {
@@ -35,22 +36,31 @@ function handleClickImage(event) {
     const instance = basicLightbox.create(
         `<img src="${imageUrl}" width="800" height="600">`,
         {
-            onShow: instance => {
-                window.addEventListener('keydown', onEscape);
+            // onShow: instance => {
+            //     window.addEventListener('keydown', onEscape);
+            // },
+
+            // onClose: instance => {
+            //     window.removeEventListener('keydown', onEscape);
+            // },
+
+            handler: null,
+            onShow(instance) {
+                this.handler = onEscape.bind(instance)
+                document.addEventListener('keydown', onEscape)
             },
 
-            onClose: instance => {
-                window.removeEventListener('keydown', onEscape);
-            },
+            onClose(instance) {
+            
+            }
         }
     );
     instance.show()
 
     function onEscape(event) {
-        if (event.code !== 'Escape') {
-            return;
+        if (event.code === 'Escape') {
+            instance.close();
         }
-        instance.close();
     };
 }
 
