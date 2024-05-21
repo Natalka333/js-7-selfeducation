@@ -57,6 +57,8 @@ function handleClickImage(event) {
     );
     instance.show()
 
+
+    // можно в сборщике вынести в отдельный модуль helpers
     function onEscape(event) {
         if (event.code === 'Escape') {
             this.close();
