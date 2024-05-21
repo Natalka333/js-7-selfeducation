@@ -47,11 +47,11 @@ function handleClickImage(event) {
             handler: null,
             onShow(instance) {
                 this.handler = onEscape.bind(instance)
-                document.addEventListener('keydown', onEscape)
+                document.addEventListener('keydown', this.handler);
             },
 
             onClose(instance) {
-            
+                document.removeEventListener('keydown', this.handler)
             }
         }
     );
@@ -59,7 +59,7 @@ function handleClickImage(event) {
 
     function onEscape(event) {
         if (event.code === 'Escape') {
-            instance.close();
+            this.close();
         }
     };
 }
